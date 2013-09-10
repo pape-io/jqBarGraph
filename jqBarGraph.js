@@ -9,34 +9,35 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  * 
- * @param data: arrayOfData         // array of data for your graph
- * @param title: false              // title of your graph, accept HTML
- * @param barSpace: 10              // this is default space between bars in pixels
- * @param width: 400                // default width of your graph ghhjgjhg
- * @param height: 200               //default height of your graph
- * @param color: '#000000'          // if you don't send colors for your data this will be default bars color
- * @param colors: false             // array of colors that will be used for your bars and legends
- * @param lbl: ''                   // if there is no label in your array
- * @param sort: false               // sort your data before displaying graph, you can sort as 'asc' or 'desc'
- * @param position: 'bottom'        // position of your bars, can be 'bottom' or 'top'. 'top' doesn't work for multi type
- * @param prefix: ''                // text that will be shown before every label
- * @param postfix: ''               // text that will be shown after every label
- * @param animate: true             // if you don't need animated appereance change to false
- * @param speed: 2                  // speed of animation in seconds
- * @param legendWidth: 100          // width of your legend box
- * @param legend: false             // if you want legend change to true
- * @param legends: false            // array for legend. for simple graph type legend will be extracted from labels if you don't set this
- * @param type: false               // for multi array data default graph type is stacked, you can change to 'multi' for multi bar type
- * @param showValues: true          // you can use this for multi and stacked type and it will show values of every bar part
- * @param showValuesColor: '#fff'   // color of font for values 
+ * @param data: arrayOfData                     // array of data for your graph
+ * @param title: false                          // title of your graph, accept HTML
+ * @param barSpace: 10                          // this is default space between bars in pixels
+ * @param width: 400                            // default width of your graph ghhjgjhg
+ * @param height: 200                                   //default height of your graph
+ * @param color: '#000000'                      // if you don't send colors for your data this will be default bars color
+ * @param colors: false                         // array of colors that will be used for your bars and legends
+ * @param lbl: ''                               // if there is no label in your array
+ * @param sort: false                           // sort your data before displaying graph, you can sort as 'asc' or 'desc'
+ * @param position: 'bottom'                    // position of your bars, can be 'bottom' or 'top'. 'top' doesn't work for multi type
+ * @param prefix: ''                            // text that will be shown before every label
+ * @param postfix: ''                           // text that will be shown after every label
+ * @param animate: true                         // if you don't need animated appereance change to false
+ * @param speed: 2                              // speed of animation in seconds
+ * @param legendWidth: 100                      // width of your legend box
+ * @param legend: false                         // if you want legend change to true
+ * @param legends: false                        // array for legend. for simple graph type legend will be extracted from labels if you don't set this
+ * @param type: false                           // for multi array data default graph type is stacked, you can change to 'multi' for multi bar type
+ * @param showValues: true                      // you can use this for multi and stacked type and it will show values of every bar part
+ * @param showValuesColor: '#fff'               // color of font for values 
  * 
  * new params through extension
  * 
- * @param grid: true                // enable or disable grid
- * @param gridSpace: 20             // space between gridtext and graphs
- * @param gridAtMax: false          // if enabled the highest grid starts at the highest value of given data
- * @param gridSections: 1           // number of gridSections (space between to grid lines having value text)
- * @param interGrids: 1             // number of intermediate grids (without value text) inside a grid section
+ * @param grid: true                            // enable or disable grid
+ * @param gridSpace: 20                         // space between gridtext and graphs
+ * @param gridAtMax: false                      // if enabled the highest grid starts at the highest value of given data
+ * @param gridSections: 1                       // number of gridSections (space between to grid lines having value text)
+ * @param gridColors: ["#444444", "#AAAAAA"]    // colors for the grid. second one is for intermediate grids.
+ * @param interGrids: 1                         // number of intermediate grids (without value text) inside a grid section
  *
  * ***** EXAMPLE ****
  * 
@@ -281,6 +282,7 @@
         }
         
         gridlines.push(highest);
+    var gridColors = arr.gridColors;
         
     //compute margins
     var marginb = $(el).find(".graphLabel").first().outerHeight();
@@ -295,8 +297,8 @@
           y = (y === -Infinity) ? 0 : y;
           y = y * (options.height-marginb-margint) + margint;
           
-          grid += "<div class='bar-line' style='border-top: 1px solid "+color+";display:block; width: "+options.width+"px;position:absolute; top:"+y+"px'>";
-          grid += "<span class='bar-text' style='position: absolute; left: 0; top:-5px;'></span>";
+          grid += "<div class='grid-line' style='border-top: 1px solid "+gridColors[0]+";display:block; width: "+options.width+"px;position:absolute; top:"+y+"px'>";
+          grid += "<span class='grid-text' style='position: absolute; left: 0; top:-5px;'></span>";
           grid += "<hr/>";
           grid += "</div>";
         }
@@ -307,7 +309,7 @@
           y = (y === -Infinity) ? 0 : y;
           y = y * (options.height-marginb-margint) + margint;
           
-          grid += "<div class='bar-line bar-inter' style='border-top: 1px solid "+color+";opacity: 0.5;block; width: "+options.width+"px;position:absolute; top:"+y+"px'>";
+          grid += "<div class='grid-line grid-intermediate' style='border-top: 1px solid "+gridColors[1]+";opacity: 0.5;block; width: "+options.width+"px;position:absolute; top:"+y+"px'>";
           grid += "<hr/>";
           grid += "</div>";
         }
@@ -361,6 +363,7 @@
 		gridSpace: 20,
 		gridAtMax: false,
 		gridSections: 2,
+    gridColors: ["#444444", "#AAAAAA"],
 		interGrids: 1
 	};
 	
