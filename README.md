@@ -1,6 +1,8 @@
 jqBarGraph
 ==========
 
+![Example](https://raw.github.com/spape/jqBarGraph/master/example.png)
+
 jqBarGraph is easy-to-use jQuery plugin for displaying your data as bar graphs.
 
 There is two type of data array for jqBarGraph. First is for simple bar graph type, and second is for multi and stacked bar type.
@@ -49,6 +51,9 @@ The code above is enough to display your data as bar graph. But if you want to m
 	type: false, // for multi array data default graph type is stacked, you can change to 'multi' for multi bar type
 	showValues: true, // you can use this for multi and stacked type and it will show values of every bar part
 	showValuesColor: '#fff' // color of font for values
-	valueStyle: null // a function which receives the value and returns whatever string it wants e.g. 1000 -> 1,000
-
-More info at: <a href="http://www.workshop.rs/jqbargraph/">WORKSHOP</a>
+	grid: true // enable or disable grid
+ 	gridSpace: 20 // space between gridtext and graphs
+ 	gridAtMax: false // if enabled the highest grid starts at the highest value of given data
+ 	gridSections: 1 // number of gridSections (space between to grid lines having value text)
+ 	gridColors: ["#444444", "#AAAAAA"] // colors for the grid. second one is for intermediate grids
+ 	interGrids: 1 // number of intermediate grids (without value text) inside a grid section
