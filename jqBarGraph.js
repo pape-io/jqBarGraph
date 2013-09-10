@@ -287,7 +287,7 @@
     var margint = $(el).find(".graphValue").first().outerHeight();
         
     //generating grid
-    var grid = "<div class='grid' style='position:absolute; height:"+options.height+"px; width:"+options.width+"px;'>";
+    var grid = "<div class='bar-grid' style='position:absolute; height:"+options.height+"px; width:"+options.width+"px;'>";
         
         for(var i = 0; i < gridlines.length; i++){
           
@@ -295,8 +295,8 @@
           y = (y === -Infinity) ? 0 : y;
           y = y * (options.height-marginb-margint) + margint;
           
-          grid += "<div class='line' style='display:block; width: "+options.width+"px;position:absolute; top:"+y+"px'>";
-          grid += "<span class='text' style='position: absolute; left: 0; top:-5px;'></span>";
+          grid += "<div class='bar-line' style='border-top: 1px solid "+color+";display:block; width: "+options.width+"px;position:absolute; top:"+y+"px'>";
+          grid += "<span class='bar-text' style='position: absolute; left: 0; top:-5px;'></span>";
           grid += "<hr/>";
           grid += "</div>";
         }
@@ -307,7 +307,7 @@
           y = (y === -Infinity) ? 0 : y;
           y = y * (options.height-marginb-margint) + margint;
           
-          grid += "<div class='line inter' style='display:block; width: "+options.width+"px;position:absolute; top:"+y+"px'>";
+          grid += "<div class='bar-line bar-inter' style='border-top: 1px solid "+color+";opacity: 0.5;block; width: "+options.width+"px;position:absolute; top:"+y+"px'>";
           grid += "<hr/>";
           grid += "</div>";
         }
